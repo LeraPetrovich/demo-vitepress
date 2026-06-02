@@ -45,7 +45,7 @@ export default defineConfig({
     root: {
       label: "English",
       lang: "en",
-      title: "Jesm documentation",
+      title: "",
       description: "Documentation with methods for JESM project",
       themeConfig: {
         nav: versionNav("en"),
@@ -56,7 +56,7 @@ export default defineConfig({
       label: "Русский",
       lang: "ru",
       link: "/ru/",
-      title: "Документация Jesm",
+      title: "",
       description: "Документация по методам проекта JESM",
       themeConfig: {
         nav: versionNav("ru"),
@@ -69,5 +69,6 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/vuejs/vitepress" },
     ],
+    logo:'/logo.svg'
   },
 });
