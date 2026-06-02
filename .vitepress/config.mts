@@ -66,9 +66,6 @@ export default defineConfig({
   },
 
   themeConfig: {
-    socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
-    ],
-    logo:'/logo.svg'
+    logo: "/logo.svg",
   },
 });
