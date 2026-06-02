@@ -1,5 +1,6 @@
 ---
 sidebar: false
+search: false
 ---
 
 # Документация Jesm

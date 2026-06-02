@@ -12,7 +12,7 @@ function examplesSidebar(
     return ruSidebar(version);
   }
 
-  return enSidebar(version)
+  return enSidebar(version);
 }
 
 function sidebarsForLocale(locale: "en" | "ru") {
@@ -28,10 +28,7 @@ function versionNav(locale: "en" | "ru"): DefaultTheme.NavItem[] {
   const home = locale === "ru" ? "/ru/" : "/";
   const homeLabel = locale === "ru" ? "Главная" : "Home";
 
-  return [
-    { text: homeLabel, link: home },
-    { component: "VersionDropdown" },
-  ];
+  return [{ text: homeLabel, link: home }, { component: "VersionDropdown" }];
 }
 
 // https://vitepress.dev/reference/site-config
@@ -67,5 +64,58 @@ export default defineConfig({
 
   themeConfig: {
     logo: "/logo.svg",
+    search: {
+      provider: "local",
+      options: {
+        locales: {
+          root: {
+            translations: {
+              button: {
+                buttonText: "Search",
+                buttonAriaLabel: "Search",
+              },
+              modal: {
+                displayDetails: "Display detailed list",
+                resetButtonTitle: "Reset search",
+                backButtonTitle: "Close search",
+                noResultsText: "No results for",
+                footer: {
+                  selectText: "to select",
+                  selectKeyAriaLabel: "enter",
+                  navigateText: "to navigate",
+                  navigateUpKeyAriaLabel: "up arrow",
+                  navigateDownKeyAriaLabel: "down arrow",
+                  closeText: "to close",
+                  closeKeyAriaLabel: "escape",
+                },
+              },
+            },
+          },
+          ru: {
+            translations: {
+              button: {
+                buttonText: "Поиск",
+                buttonAriaLabel: "Поиск",
+              },
+              modal: {
+                displayDetails: "Подробный список",
+                resetButtonTitle: "Сбросить поиск",
+                backButtonTitle: "Закрыть поиск",
+                noResultsText: "Ничего не найдено по запросу",
+                footer: {
+                  selectText: "выбрать",
+                  selectKeyAriaLabel: "Enter",
+                  navigateText: "навигация",
+                  navigateUpKeyAriaLabel: "стрелка вверх",
+                  navigateDownKeyAriaLabel: "стрелка вниз",
+                  closeText: "закрыть",
+                  closeKeyAriaLabel: "Escape",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
 });
