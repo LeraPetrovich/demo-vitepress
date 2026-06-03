@@ -54,7 +54,7 @@ PoC: визуальная тема документации приведена �
 | Было | Стало |
 |------|--------|
 | Только встроенный version/locale UI | **VersionDropdown** в nav (как flyout, active версия — primary через `VPMenuLink.active`) |
-| Landing версий — plain links | **VersionGrid**: badge «current» — **success** `#50CD89`, hover-тень карточек |
+| Landing версий — plain links | **VersionGrid**: badge «current» — градиент **info → primary** (`#7239EA` → `#3E97FF`), белый текст, рамка |
 | GitHub в navbar | Убран (`socialLinks` не задан) |
 
 ---
