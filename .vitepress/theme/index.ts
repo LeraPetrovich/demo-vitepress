@@ -1,5 +1,5 @@
 import type { Theme } from "vitepress";
-import { yandexMetrika } from "@hywax/vitepress-yandex-metrika";
+import { yandexMetrika } from "../yandexMetrika";
 import DefaultTheme from "vitepress/theme";
 import { getYandexMetrikaOptions } from "../metrikaConfig";
 import Layout from "./Layout.vue";

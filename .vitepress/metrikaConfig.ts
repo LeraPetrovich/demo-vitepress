@@ -1,4 +1,4 @@
-import type { YandexMetrikaOptions } from "@hywax/vitepress-yandex-metrika";
+import type { YandexMetrikaOptions } from "./yandexMetrika";
 
 export function getYandexMetrikaOptions(): YandexMetrikaOptions | null {
   const id = Number(import.meta.env.VITE_YANDEX_METRIKA_ID);
