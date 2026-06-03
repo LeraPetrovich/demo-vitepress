@@ -1,8 +1,14 @@
+import fs from "node:fs";
+import path from "node:path";
 import { defineConfig } from "vitepress";
 import type { DefaultTheme } from "vitepress";
-import { CURRENT, VERSIONS } from "./config/constants";
-import { ruSidebar } from "./config/ruSidebar";
+import { VERSIONS } from "./config/constants";
 import { enSidebar } from "./config/enSidebar";
+import { ruSidebar } from "./config/ruSidebar";
+import { getSiteHostname, robotsTxt } from "./siteHostname";
+import { createTransformHead } from "./seoHead";
+
+const siteHostname = getSiteHostname();
 
 function examplesSidebar(
   locale: "en" | "ru",
@@ -35,14 +41,38 @@ function versionNav(locale: "en" | "ru"): DefaultTheme.NavItem[] {
 export default defineConfig({
   srcDir: "docs",
 
+  //SEO
   title: "Jesm documentation",
   description: "Documentation with methods for JESM project",
 
+  sitemap: {
+    hostname: siteHostname,
+  },
+  lastUpdated: true,
+  cleanUrls: true,
+  head: [
+    ["link", { rel: "icon", href: "/favicon.ico", type: "image/x-icon" }],
+    ["meta", { property: "og:type", content: "website" }],
+    ["meta", { property: "og:site_name", content: "JESM Documentation" }],
+  ],
+
+  //SEO: og:title, og:description, og:url и Twitter — из frontmatter каждой страницы 
+  transformHead: createTransformHead(siteHostname),
+
+  buildEnd({ outDir }) {
+    fs.writeFileSync(
+      path.join(outDir, "robots.txt"),
+      robotsTxt(siteHostname),
+      "utf-8",
+    );
+  },
+
+  //LOCALES
   locales: {
     root: {
       label: "English",
       lang: "en",
-      title: "",
+      title: "Jesm documentation",
       description: "Documentation with methods for JESM project",
       themeConfig: {
         nav: versionNav("en"),
@@ -53,7 +83,7 @@ export default defineConfig({
       label: "Русский",
       lang: "ru",
       link: "/ru/",
-      title: "",
+      title: "Документация JESM",
       description: "Документация по методам проекта JESM",
       themeConfig: {
         nav: versionNav("ru"),
@@ -61,6 +91,8 @@ export default defineConfig({
       },
     },
   },
+
+  //THEME
 
   themeConfig: {
     logo: "/logo.svg",

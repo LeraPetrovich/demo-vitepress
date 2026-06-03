@@ -138,7 +138,7 @@ docs/{locale?}/{version}/{platform}/{slug}.md
 docs/ru/1.2.2/simpleone/my-command.md
 ```
 
-2. Заполните **frontmatter** (обязательно для команд):
+2. Заполните **frontmatter** — **обязательно на каждой новой странице** (команда, `about-atr`, `content`, `index` версии, главная):
 
 ```yaml
 ---
@@ -150,11 +150,17 @@ command: myCommand
 ---
 ```
 
-| Поле | Зачем |
-|------|--------|
-| `title` | Вкладка браузера; в поиске помогает отличить версии (`[1.2.2]` не переводить на EN) |
-| `description` | SEO / превью |
-| `version`, `platform`, `command` | Метаданные для фильтрации и единообразия |
+| Поле | Обязательно | Зачем |
+|------|-------------|--------|
+| `title` | **да, всегда** | Вкладка браузера, local search, SEO; префикс версии **`[1.2.2]` в начале** (на EN и RU одинаково) |
+| `description` | **да, всегда** | SEO / сниппет в поисковиках; одна осмысленная строка |
+| `version`, `platform`, `command` | для команд | Метаданные для фильтрации и единообразия |
+
+**Правило `title`:** номер версии **в начале**, в квадратных скобках: `"[1.2.2] loginSimpleOne"`, `"[1.2.2] Содержание"`, `"[1.2.2] JESM ATR Module"`. Не `loginSimpleOne [1.2.2]` и не `[1.2.1]` на страницах другой версии — номер в `title` должен совпадать с папкой (`docs/1.2.2/…` → `[1.2.2]`).
+
+**Главные без версии в пути** (`docs/index.md`, `docs/ru/index.md`): `title` и `description` без `[1.2.x]`.
+
+**Страницы версии** (`docs/1.2.2/index.md`, `about-atr`, `content` и зеркала в `docs/ru/…`): `title` **с** `[1.2.x]`, `description` — кратко о разделе.
 
 3. Тело страницы — по шаблону существующих команд:
 
@@ -175,10 +181,9 @@ docs/1.2.2/simpleone/my-command.md
 ```
 
 2. **Переведите** описание, аргументы, примеры (комментарии в коде — по желанию).
-3. **Не переводите:**
-   - `title` prefix версии: `"[1.2.2] myCommand"`
-   - `command`, `platform`, имена в `cy.*`
-4. Ссылки в EN: `/1.2.2/content#credentials` (без `/ru/`).
+3. **Не переводите:** префикс `[1.2.2]` в `title`, поля `command`, `platform`, имена в `cy.*`. Переводите текст в `description` и тело страницы.
+4. **Скопируйте те же `title` (с тем же `[1.2.x]`) и `description` (переведённый)** — оба поля обязательны и на EN.
+5. Ссылки в EN: `/1.2.2/content#credentials` (без `/ru/`).
 
 > Правило: **структура файлов RU и EN должна совпадать** (те же версии, платформы, slug).
 
@@ -251,11 +256,25 @@ npm run dev
 - [ ] Поиск (Cmd+K): на RU находится RU-страница, на EN — EN; в title виден `[1.2.x]`
 - [ ] Внутренние ссылки не ведут на чужой locale/версию
 - [ ] `npm run build` проходит без ошибок
+- [ ] SEO: в HTML страницы есть `og:title`, `og:description` (совпадают с frontmatter)
 
 ```bash
 npm run build
 npm run preview   # опционально — просмотр production-сборки
 ```
+
+### SEO: превью при шаринге (автоматически)
+
+На каждой странице при сборке подставляются теги Open Graph и Twitter из ваших **`title`** и **`description`** в frontmatter (см. `.vitepress/seoHead.ts`, хук `transformHead` в `config.mts`).
+
+| Тег | Откуда |
+|-----|--------|
+| `og:title`, `twitter:title` | `title` из frontmatter + суффикс сайта |
+| `og:description`, `twitter:description` | `description` из frontmatter |
+| `og:url` | `SITE_HOSTNAME` + путь страницы |
+| `og:image`, `twitter:image` | `docs/public/og-image.png` (общая для сайта) |
+
+Перед продом задайте **`SITE_HOSTNAME`** в `.env` (как для sitemap). Картинка: **`docs/public/og-image.png`**, ~1200×630 px.
 
 ---
 
@@ -271,6 +290,30 @@ docs/{version}/.../my-command.md
 docs/ru/{version}/content.md    # если меняли
 docs/{version}/content.md     # если меняли
 ```
+
+---
+
+## Шаблон frontmatter (разделы без команды)
+
+**`about-atr` / `content` / `index` версии (RU):**
+
+```yaml
+---
+title: "[1.2.2] Модуль JESM ATR"
+description: "Документация JESM ATR — автоматизация тестирования…"
+---
+```
+
+**То же на EN** (`docs/1.2.2/about-atr.md`):
+
+```yaml
+---
+title: "[1.2.2] JESM ATR Module"
+description: "JESM ATR documentation — test automation for…"
+---
+```
+
+**Главная** (`docs/index.md`, `docs/ru/index.md`) — без `[1.2.x]` в `title`.
 
 ---
 
@@ -309,7 +352,9 @@ command: commandName
 | Страница есть, в меню нет | Забыли `ruSidebar.ts` / `enSidebar.ts` |
 | 404 на EN | Файл только в `docs/ru/`, нет зеркала в `docs/` |
 | Ссылка ведёт на RU с EN-страницы | В EN-файлах пути без `/ru/` |
-| Две версии в поиске не отличить | В `title` frontmatter должен быть `[1.2.x]` |
+| Две версии в поиске не отличить | В `title` в начале: `[1.2.x]`, номер = папке версии |
+| В `1.2.1/about-atr` в title стоит `[1.2.2]` | Версия в `title` = версия в пути файла |
+| Нет `title` / `description` | Обязательны на **каждой** добавленной странице, не только на командах |
 | Версия в `cy.command()` | Версия только в URL и frontmatter, не в API-примерах |
 | Команда только в 1.2.2, но добавлена в sidebar 1.2.1 | Дублируйте файлы и sidebar только там, где команда реально есть |
 | 404 после выбора версии | Нет `about-atr.md` (или другого `NODE_VERSION_PAGE`) в этой версии на RU и EN |
@@ -373,7 +418,7 @@ redirect: /1.2.3/about-atr
 1. [ ] Версия согласована (`1.2.2` / archive / обе)
 2. [ ] `docs/ru/1.2.2/{platform}/{slug}.md` создан
 3. [ ] `docs/1.2.2/{platform}/{slug}.md` создан (EN)
-4. [ ] Frontmatter: `title`, `description`, `version`, `platform`, `command`
+4. [ ] **RU + EN:** в frontmatter есть **`title`** (`[1.2.2] …`) и **`description`**; для команд — ещё `version`, `platform`, `command`
 5. [ ] `ruSidebar.ts` и `enSidebar.ts` обновлены
 6. [ ] `content.md` (RU + EN) при необходимости
 7. [ ] Ссылки с `/ru/` и `/` соответственно

@@ -1,6 +1,8 @@
 ---
-title: JESM ATR Module
+title: "[1.2.2] JESM ATR Module"
 description: JESM ATR documentation — test automation for BPMS, CRM, ERP, and other systems.
+version: "1.2.2"
+module: Automation Test Runner
 ---
 
 # JESM ATR Module (1.2.2)

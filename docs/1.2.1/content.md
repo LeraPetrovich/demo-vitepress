@@ -1,7 +1,9 @@
 ---
-title: Contents
+title: "[1.2.1] Contents"
 description: Test scenarios, commands, hooks, and async usage in JESM ATR.
 outline: deep
+version: "1.2.1"
+module: Automation Test Runner
 ---
 
 # Contents

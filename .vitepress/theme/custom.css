@@ -262,7 +262,7 @@
   box-shadow: none;
 }
 
-:root:not(.dark) .vp-doc div[class*='language-'],
+:root:not(.dark) .vp-doc div[class*="language-"],
 :root:not(.dark) .vp-block {
   border: 1px solid var(--jesm-sidebar-light-border);
   box-shadow: var(--vp-shadow-1);
@@ -287,7 +287,12 @@
     background-color: var(--jesm-sidebar-light-bg) !important;
   }
 
-  :root:not(.dark) .VPNav .VPNavBar.has-sidebar > .wrapper > .container > .title {
+  :root:not(.dark)
+    .VPNav
+    .VPNavBar.has-sidebar
+    > .wrapper
+    > .container
+    > .title {
     background-color: var(--jesm-sidebar-light-bg);
     border-bottom-color: var(--jesm-sidebar-light-border);
   }
@@ -298,7 +303,12 @@
 }
 
 :root:not(.dark) .VPNav .VPNavBarTitle .title {
-  color: var(--jesm-sidebar-light-text);
+   color: var(--jesm-text-nav-muted);
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 
 :root:not(.dark) .VPNav .VPNavBarTitle .logo {
@@ -394,7 +404,12 @@
 }
 
 .dark .VPNav .VPNavBarTitle .title {
-  color: var(--jesm-text-nav);
+  color: var(--jesm-text-nav-muted);
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 
 .dark .VPNav .VPNavBarTitle .logo {
