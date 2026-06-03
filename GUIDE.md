@@ -271,10 +271,10 @@ npm run preview   # опционально — просмотр production-сб�
 |-----|--------|
 | `og:title`, `twitter:title` | `title` из frontmatter + суффикс сайта |
 | `og:description`, `twitter:description` | `description` из frontmatter |
-| `og:url` | `SITE_HOSTNAME` + путь страницы |
+| `og:url` | `VITE_SITE_HOSTNAME` + путь страницы |
 | `og:image`, `twitter:image` | `docs/public/og-image.png` (общая для сайта) |
 
-Перед продом задайте **`SITE_HOSTNAME`** в `.env` (как для sitemap). Картинка: **`docs/public/og-image.png`**, ~1200×630 px.
+Перед продом задайте **`VITE_SITE_HOSTNAME`** в `.env` (как для sitemap). Картинка: **`docs/public/og-image.png`**, ~1200×630 px.
 
 ---
 

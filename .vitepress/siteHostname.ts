@@ -10,7 +10,8 @@ const projectRoot = path.resolve(
 export function getSiteHostname(): string {
   const mode = process.env.MODE || process.env.NODE_ENV || "production";
   const env = loadEnv(mode, projectRoot, "");
-  const raw = env.SITE_HOSTNAME?.trim() || "https://demo-vitepress.netlify.app";
+  const raw =
+    env.VITE_SITE_HOSTNAME?.trim() || "https://demo-vitepress.netlify.app";
   return raw.replace(/\/+$/, "");
 }
 
