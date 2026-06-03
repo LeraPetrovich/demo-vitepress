@@ -63,7 +63,7 @@ function versionLink(version: string) {
 }
 
 .version-card__badge {
-  color: var(--vp-c-brand-1);
+  color: var(--jesm-success, var(--vp-c-brand-1));
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;

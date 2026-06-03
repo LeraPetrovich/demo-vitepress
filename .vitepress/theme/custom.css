@@ -1,1 +1,526 @@
-/* Theme extensions for JESM docs */
+/* =============================================================================
+   JESM UI → VitePress (default theme, CSS variables)
+   Sources: jesm-ui/src/assets/sass/components/_variables.custom.scss
+            jesm-ui/src/assets/sass/layout/_variables.custom.scss
+   ============================================================================= */
+
+:root {
+  /* --- JESM tokens --- */
+  --jesm-primary: #3e97ff;
+  --jesm-primary-active: #0095e8;
+  --jesm-primary-light: #f1faff;
+  --jesm-primary-light-dark: #212e48;
+
+  --jesm-success: #50cd89;
+  --jesm-success-active: #47be7d;
+  --jesm-success-light: #e8fff3;
+  --jesm-success-light-dark: #1c3238;
+
+  --jesm-info: #7239ea;
+  --jesm-info-active: #5014d0;
+  --jesm-info-light: #f8f5ff;
+  --jesm-info-light-dark: #2f264f;
+
+  --jesm-warning: #ffc700;
+  --jesm-warning-active: #f1bc00;
+  --jesm-warning-light: #fff8dd;
+  --jesm-warning-light-dark: #392f28;
+
+  --jesm-danger: #f1416c;
+  --jesm-danger-active: #d9214e;
+  --jesm-danger-light: #fff5f8;
+  --jesm-danger-light-dark: #3a2434;
+
+  --jesm-bg-app: #fcfcfc;
+  --jesm-bg-header: #131313;
+  --jesm-bg-body-dark: #1c1c1c;
+  --jesm-bg-active-menu: #242424;
+  --jesm-bg-sidebar-active: #1c1c21;
+  --jesm-border-header: #282a3d;
+  --jesm-border-sidebar: #393945;
+
+  --jesm-text-nav-muted: #858585;
+  --jesm-text-nav: #ffffff;
+  --jesm-text-nav-soft: rgba(255, 255, 255, 0.75);
+  /* Sidebar light (JESM light-sidebar) */
+  --jesm-sidebar-light-bg: #ffffff;
+  --jesm-sidebar-light-active: #f7f8fb;
+  --jesm-sidebar-light-text: #252f4a;
+  --jesm-sidebar-light-muted: #99a1b7;
+  --jesm-sidebar-light-heading: #b5b5c3;
+  --jesm-sidebar-light-border: #e4e6ef;
+
+  /* Sidebar dark (JESM dark-sidebar) */
+  --jesm-text-sidebar: #cdcdde;
+  --jesm-text-sidebar-muted: #888a8e;
+  --jesm-text-sidebar-heading: #626671;
+
+  /* --- Brand: ссылки = primary (синий) --- */
+  --vp-c-brand-1: var(--jesm-primary);
+  --vp-c-brand-2: var(--jesm-primary-active);
+  --vp-c-brand-3: #187de4;
+  --vp-c-brand-soft: rgba(62, 151, 255, 0.14);
+
+  /* --- Tip = success (зелёный) --- */
+  --vp-c-tip-1: #3db87a;
+  --vp-c-tip-2: var(--jesm-success);
+  --vp-c-tip-3: var(--jesm-success-active);
+  --vp-c-tip-soft: rgba(80, 205, 137, 0.14);
+
+  /* --- Semantic: warning / danger / important (info) --- */
+  --vp-c-warning-1: #9f6a00;
+  --vp-c-warning-2: var(--jesm-warning-active);
+  --vp-c-warning-3: var(--jesm-warning);
+  --vp-c-warning-soft: var(--jesm-warning-light);
+
+  --vp-c-danger-1: var(--jesm-danger);
+  --vp-c-danger-2: var(--jesm-danger-active);
+  --vp-c-danger-3: #b62a3c;
+  --vp-c-danger-soft: var(--jesm-danger-light);
+
+  --vp-c-caution-1: var(--jesm-danger);
+  --vp-c-caution-2: var(--jesm-danger-active);
+  --vp-c-caution-3: #b62a3c;
+  --vp-c-caution-soft: var(--jesm-danger-light);
+
+  --vp-c-important-1: var(--jesm-info);
+  --vp-c-important-2: var(--jesm-info-active);
+  --vp-c-important-3: #8e5cd9;
+  --vp-c-important-soft: var(--jesm-info-light);
+
+  --vp-c-note-1: var(--jesm-primary);
+  --vp-c-note-2: var(--jesm-primary-active);
+  --vp-c-note-3: #187de4;
+  --vp-c-note-soft: var(--jesm-primary-light);
+
+  /* --- Custom blocks --- */
+  --vp-custom-block-info-bg: var(--jesm-primary-light);
+  --vp-custom-block-info-code-bg: var(--jesm-primary-light);
+  --vp-custom-block-note-bg: var(--jesm-primary-light);
+  --vp-custom-block-note-code-bg: var(--jesm-primary-light);
+
+  --vp-custom-block-tip-bg: var(--jesm-success-light);
+  --vp-custom-block-tip-code-bg: var(--jesm-success-light);
+
+  --vp-custom-block-important-bg: var(--jesm-info-light);
+  --vp-custom-block-important-code-bg: var(--jesm-info-light);
+
+  --vp-custom-block-warning-bg: var(--jesm-warning-light);
+  --vp-custom-block-warning-code-bg: var(--jesm-warning-light);
+
+  --vp-custom-block-danger-bg: var(--jesm-danger-light);
+  --vp-custom-block-danger-code-bg: var(--jesm-danger-light);
+
+  --vp-custom-block-caution-bg: var(--jesm-danger-light);
+  --vp-custom-block-caution-code-bg: var(--jesm-danger-light);
+
+  /* --- Content backgrounds (light) --- */
+  --vp-c-bg: var(--jesm-bg-app);
+  --vp-c-bg-alt: #ffffff;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f1f1f2;
+
+  --vp-c-divider: #e4e6ef;
+  --vp-c-gutter: #f1f1f2;
+
+  /* --- Doc sidebar: светлый (JESM light-sidebar) --- */
+  --vp-sidebar-bg-color: var(--jesm-sidebar-light-bg);
+  --vp-local-nav-bg-color: var(--jesm-bg-app);
+
+  /* --- Navbar: светлый (как light-sidebar) --- */
+  --vp-nav-bg-color: var(--jesm-sidebar-light-bg);
+  --vp-nav-screen-bg-color: var(--jesm-sidebar-light-bg);
+  --vp-nav-height: 64px;
+}
+
+.dark {
+  --vp-c-brand-1: #5cadff;
+  --vp-c-brand-2: var(--jesm-primary);
+  --vp-c-brand-3: var(--jesm-primary-active);
+  --vp-c-brand-soft: rgba(62, 151, 255, 0.16);
+
+  --vp-c-tip-1: #6ee0a8;
+  --vp-c-tip-2: var(--jesm-success);
+  --vp-c-tip-3: var(--jesm-success-active);
+  --vp-c-tip-soft: rgba(80, 205, 137, 0.16);
+
+  --vp-c-warning-1: var(--jesm-warning);
+  --vp-c-warning-2: var(--jesm-warning-active);
+  --vp-c-warning-3: #da8b17;
+  --vp-c-warning-soft: var(--jesm-warning-light-dark);
+
+  --vp-c-danger-1: #f66f81;
+  --vp-c-danger-2: var(--jesm-danger);
+  --vp-c-danger-3: var(--jesm-danger-active);
+  --vp-c-danger-soft: var(--jesm-danger-light-dark);
+
+  --vp-c-caution-1: #f66f81;
+  --vp-c-caution-2: var(--jesm-danger);
+  --vp-c-caution-3: var(--jesm-danger-active);
+  --vp-c-caution-soft: var(--jesm-danger-light-dark);
+
+  --vp-c-important-1: #c8abfa;
+  --vp-c-important-2: var(--jesm-info);
+  --vp-c-important-3: var(--jesm-info-active);
+  --vp-c-important-soft: var(--jesm-info-light-dark);
+
+  --vp-custom-block-info-bg: var(--jesm-primary-light-dark);
+  --vp-custom-block-info-code-bg: var(--jesm-primary-light-dark);
+  --vp-custom-block-note-bg: var(--jesm-primary-light-dark);
+  --vp-custom-block-note-code-bg: var(--jesm-primary-light-dark);
+
+  --vp-custom-block-tip-bg: var(--jesm-success-light-dark);
+  --vp-custom-block-tip-code-bg: var(--jesm-success-light-dark);
+
+  --vp-custom-block-important-bg: var(--jesm-info-light-dark);
+  --vp-custom-block-important-code-bg: var(--jesm-info-light-dark);
+
+  --vp-custom-block-warning-bg: var(--jesm-warning-light-dark);
+  --vp-custom-block-warning-code-bg: var(--jesm-warning-light-dark);
+
+  --vp-custom-block-danger-bg: var(--jesm-danger-light-dark);
+  --vp-custom-block-danger-code-bg: var(--jesm-danger-light-dark);
+
+  --vp-custom-block-caution-bg: var(--jesm-danger-light-dark);
+  --vp-custom-block-caution-code-bg: var(--jesm-danger-light-dark);
+
+  --vp-c-bg: var(--jesm-bg-body-dark);
+  --vp-c-bg-alt: #1b1b29;
+  --vp-c-bg-elv: #2b2b40;
+  --vp-c-bg-soft: #323248;
+
+  --vp-c-text-1: #dfdfd6;
+  --vp-c-text-2: #92929f;
+  --vp-c-text-3: #6d6d80;
+
+  --vp-c-divider: var(--jesm-border-sidebar);
+  --vp-c-gutter: #000000;
+
+  --vp-local-nav-bg-color: var(--jesm-bg-body-dark);
+
+  /* Doc sidebar + navbar: тёмные (JESM dark-sidebar) */
+  --vp-sidebar-bg-color: var(--jesm-bg-header);
+  --vp-nav-bg-color: var(--jesm-bg-header);
+  --vp-nav-screen-bg-color: var(--jesm-bg-header);
+}
+
+/* Info block: ссылки фиолетовые (JESM $info), не primary */
+.vp-doc .custom-block.info a,
+.vp-doc .custom-block.info a > code,
+.vp-doc .custom-block.details a,
+.vp-doc .custom-block.details a > code {
+  color: var(--jesm-info);
+}
+
+.vp-doc .custom-block.info a:hover,
+.vp-doc .custom-block.details a:hover {
+  color: var(--jesm-info-active);
+}
+
+.vp-doc .custom-block.important a,
+.vp-doc .custom-block.important a > code {
+  color: var(--jesm-info);
+}
+
+.vp-doc .custom-block.important a:hover {
+  color: var(--jesm-info-active);
+}
+
+/* =============================================================================
+   Light theme — рамки и тени (custom blocks, inline code, code blocks)
+   ============================================================================= */
+
+:root:not(.dark) {
+  --vp-custom-block-info-border: rgba(62, 151, 255, 0.4);
+  --vp-custom-block-note-border: rgba(62, 151, 255, 0.4);
+  --vp-custom-block-tip-border: rgba(80, 205, 137, 0.45);
+  --vp-custom-block-important-border: rgba(114, 57, 234, 0.4);
+  --vp-custom-block-warning-border: rgba(255, 199, 0, 0.55);
+  --vp-custom-block-danger-border: rgba(241, 65, 108, 0.4);
+  --vp-custom-block-caution-border: rgba(241, 65, 108, 0.4);
+
+  --vp-code-bg: #ffffff;
+  --vp-code-block-bg: #ffffff;
+  --vp-code-copy-code-bg: #ffffff;
+  --vp-code-copy-code-hover-bg: var(--jesm-sidebar-light-active);
+  --vp-code-copy-code-border-color: var(--jesm-sidebar-light-border);
+  --vp-code-copy-code-hover-border-color: var(--jesm-sidebar-light-border);
+  --vp-code-block-divider-color: var(--jesm-sidebar-light-border);
+}
+
+:root:not(.dark) .vp-doc .custom-block {
+  box-shadow: var(--vp-shadow-1);
+}
+
+:root:not(.dark) .vp-doc :not(pre) > code {
+  border: 1px solid var(--jesm-sidebar-light-border);
+  box-shadow: 0 1px 2px rgba(37, 47, 74, 0.06);
+}
+
+:root:not(.dark) .vp-doc .custom-block code {
+  border: 1px solid rgba(37, 47, 74, 0.1);
+  box-shadow: none;
+}
+
+:root:not(.dark) .vp-doc div[class*='language-'],
+:root:not(.dark) .vp-block {
+  border: 1px solid var(--jesm-sidebar-light-border);
+  box-shadow: var(--vp-shadow-1);
+}
+
+/* =============================================================================
+   Navbar — light / dark по теме (как sidebar)
+   ============================================================================= */
+
+/* --- Light header --- */
+:root:not(.dark) .VPNav .VPNavBar,
+:root:not(.dark) .VPNav .VPNavBar.home,
+:root:not(.dark) .VPNav .VPNavBar.home.top,
+:root:not(.dark) .VPNav .VPNavBar.has-sidebar,
+:root:not(.dark) .VPNav .VPNavBar:not(.home),
+:root:not(.dark) .VPNav .VPNavBar.screen-open {
+  background-color: var(--jesm-sidebar-light-bg) !important;
+}
+
+@media (min-width: 960px) {
+  :root:not(.dark) .VPNav .VPNavBar .content-body {
+    background-color: var(--jesm-sidebar-light-bg) !important;
+  }
+
+  :root:not(.dark) .VPNav .VPNavBar.has-sidebar > .wrapper > .container > .title {
+    background-color: var(--jesm-sidebar-light-bg);
+    border-bottom-color: var(--jesm-sidebar-light-border);
+  }
+}
+
+:root:not(.dark) .VPNav .VPNavBar .divider-line {
+  background-color: var(--jesm-sidebar-light-border);
+}
+
+:root:not(.dark) .VPNav .VPNavBarTitle .title {
+  color: var(--jesm-sidebar-light-text);
+}
+
+:root:not(.dark) .VPNav .VPNavBarTitle .logo {
+  filter: none;
+  opacity: 1;
+}
+
+:root:not(.dark) .VPNav .VPNavBarMenuLink {
+  color: var(--jesm-sidebar-light-text) !important;
+}
+
+:root:not(.dark) .VPNav .VPNavBarMenuLink:hover,
+:root:not(.dark) .VPNav .VPNavBarMenuLink.active {
+  color: var(--jesm-primary) !important;
+}
+
+:root:not(.dark) .VPNav .VPFlyout .button,
+:root:not(.dark) .VPNav .VPFlyout .text {
+  color: var(--jesm-sidebar-light-text) !important;
+}
+
+:root:not(.dark) .VPNav .VPFlyout:hover .button,
+:root:not(.dark) .VPNav .VPFlyout:hover .text,
+:root:not(.dark) .VPNav .VPFlyout.active .text {
+  color: var(--jesm-primary) !important;
+}
+
+:root:not(.dark) .VPNav .VPNavBarVersions .title {
+  color: var(--jesm-sidebar-light-text) !important;
+}
+
+/* Выбранный язык во встроенном меню VitePress */
+.VPNav .VPNavBarTranslations .title {
+  color: var(--jesm-primary) !important;
+  font-weight: 700;
+  background-color: transparent !important;
+}
+
+:root:not(.dark) .VPNav .VPNavBarSearchButton {
+  color: var(--jesm-sidebar-light-text) !important;
+}
+
+@media (min-width: 768px) {
+  :root:not(.dark) .VPNav .VPNavBarSearchButton {
+    background-color: var(--jesm-sidebar-light-active) !important;
+    color: var(--jesm-sidebar-light-text) !important;
+    border: 1px solid var(--jesm-sidebar-light-border);
+  }
+
+  :root:not(.dark) .VPNav .VPNavBarSearchButton .keys {
+    border-color: var(--jesm-sidebar-light-border);
+    color: var(--jesm-sidebar-light-text);
+  }
+}
+
+:root:not(.dark) .VPNav .VPNavBar .menu + .translations::before,
+:root:not(.dark) .VPNav .VPNavBar .menu + .appearance::before,
+:root:not(.dark) .VPNav .VPNavBar .translations + .appearance::before {
+  background-color: var(--jesm-sidebar-light-border);
+}
+
+:root:not(.dark) .VPNav .VPSwitchAppearance :deep(.switch) {
+  color: var(--jesm-sidebar-light-text);
+}
+
+:root:not(.dark) .VPNav .VPSwitchAppearance:hover :deep(.switch) {
+  color: var(--jesm-primary);
+}
+
+/* --- Dark header --- */
+.dark .VPNav .VPNavBar,
+.dark .VPNav .VPNavBar.home,
+.dark .VPNav .VPNavBar.home.top,
+.dark .VPNav .VPNavBar.has-sidebar,
+.dark .VPNav .VPNavBar:not(.home),
+.dark .VPNav .VPNavBar.screen-open {
+  background-color: var(--jesm-bg-header) !important;
+}
+
+@media (min-width: 960px) {
+  .dark .VPNav .VPNavBar .content-body {
+    background-color: var(--jesm-bg-header) !important;
+  }
+
+  .dark .VPNav .VPNavBar.has-sidebar > .wrapper > .container > .title {
+    background-color: var(--jesm-bg-header);
+    border-bottom-color: var(--jesm-border-header);
+  }
+}
+
+.dark .VPNav .VPNavBar .divider-line {
+  background-color: var(--jesm-border-header);
+}
+
+.dark .VPNav .VPNavBarTitle .title {
+  color: var(--jesm-text-nav);
+}
+
+.dark .VPNav .VPNavBarTitle .logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
+
+.dark .VPNav .VPNavBarMenuLink {
+  color: var(--jesm-text-nav) !important;
+}
+
+.dark .VPNav .VPNavBarMenuLink:hover,
+.dark .VPNav .VPNavBarMenuLink.active {
+  color: var(--jesm-text-nav) !important;
+}
+
+.dark .VPNav .VPFlyout .button,
+.dark .VPNav .VPFlyout .text {
+  color: var(--jesm-text-nav) !important;
+}
+
+.dark .VPNav .VPFlyout:hover .button,
+.dark .VPNav .VPFlyout:hover .text,
+.dark .VPNav .VPFlyout.active .text {
+  color: var(--jesm-text-nav) !important;
+}
+
+.dark .VPNav .VPNavBarVersions .title {
+  color: var(--jesm-text-nav) !important;
+}
+
+.dark .VPNav .VPNavBarSearchButton {
+  color: var(--jesm-text-nav) !important;
+}
+
+@media (min-width: 768px) {
+  .dark .VPNav .VPNavBarSearchButton {
+    background-color: var(--jesm-bg-active-menu) !important;
+    color: var(--jesm-text-nav) !important;
+    border: 1px solid var(--jesm-border-header);
+  }
+
+  .dark .VPNav .VPNavBarSearchButton .keys {
+    border-color: var(--jesm-border-header);
+    color: var(--jesm-text-nav);
+  }
+}
+
+.dark .VPNav .VPNavBar .menu + .translations::before,
+.dark .VPNav .VPNavBar .menu + .appearance::before,
+.dark .VPNav .VPNavBar .translations + .appearance::before {
+  background-color: var(--jesm-border-header);
+}
+
+.dark .VPNav .VPSwitchAppearance :deep(.switch) {
+  color: var(--jesm-text-nav);
+}
+
+.dark .VPNav .VPSwitchAppearance:hover :deep(.switch) {
+  color: var(--jesm-text-nav);
+}
+
+/* =============================================================================
+   Doc sidebar — light / dark по теме VitePress
+   ============================================================================= */
+
+/* Light theme: JESM light-sidebar */
+:root:not(.dark) .VPSidebar {
+  --vp-c-text-1: var(--jesm-sidebar-light-text);
+  --vp-c-text-2: var(--jesm-sidebar-light-muted);
+  --vp-c-text-3: var(--jesm-sidebar-light-heading);
+  border-right: 1px solid var(--jesm-sidebar-light-border);
+}
+
+:root:not(.dark) .VPSidebarItem.level-0 .text {
+  color: var(--jesm-sidebar-light-text);
+}
+
+:root:not(.dark) .VPSidebarItem.is-active > .item > .link {
+  background-color: var(--jesm-sidebar-light-active);
+  border-radius: 6px;
+}
+
+/* Dark theme: JESM dark-sidebar */
+.dark .VPSidebar {
+  --vp-c-text-1: var(--jesm-text-sidebar);
+  --vp-c-text-2: var(--jesm-text-sidebar-muted);
+  --vp-c-text-3: var(--jesm-text-sidebar-heading);
+  border-right: 1px dashed var(--jesm-border-sidebar);
+}
+
+.dark .VPSidebarItem.level-0 .text {
+  color: var(--jesm-text-sidebar);
+}
+
+.dark .VPSidebarItem.is-active > .item > .link {
+  background-color: var(--jesm-bg-sidebar-active);
+  border-radius: 6px;
+}
+
+/* Active link — primary в обеих темах */
+.VPSidebarItem.level-0.is-active > .item .link > .text,
+.VPSidebarItem.level-1.is-active > .item .link > .text,
+.VPSidebarItem.level-2.is-active > .item .link > .text {
+  color: var(--jesm-primary);
+}
+
+@media (min-width: 960px) {
+  :root:not(.dark) .VPNavBar.has-sidebar .divider {
+    border-color: var(--jesm-sidebar-light-border);
+  }
+
+  .dark .VPNavBar.has-sidebar .divider {
+    border-color: var(--jesm-border-header);
+  }
+}
+
+/* Version grid — тень карточек JESM */
+.version-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dark .version-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.version-card__badge {
+  color: var(--jesm-success);
+}

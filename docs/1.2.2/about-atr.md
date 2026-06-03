@@ -93,3 +93,41 @@ Main components:
 **Worker** is software that runs and executes test scenarios and processes results. There can be several workers; **at least two are recommended**. More workers enable parallel testing and faster queue processing. The worker runs tests in the Chrome browser.
 
 Each component has its own version — consider this when upgrading JESM following vendor guides.
+
+## Theme preview (JESM palette)
+
+Built-in VitePress blocks for checking brand and semantic colors in light/dark mode.
+
+**Text:** regular paragraph, [link to Contents](/1.2.2/content), and `inline code`.
+
+::: info INFO
+Neutral informational block. Border and background use `--vp-custom-block-info-*` (brand-related in default theme).
+:::
+
+::: tip TIP
+Hint or best practice. Uses `--vp-c-tip-*` (aligned with brand green after theming).
+:::
+
+::: note NOTE
+General note, similar to info. Useful to compare with **info** side by side.
+:::
+
+::: important IMPORTANT
+Highlighted requirement. Uses purple **important** palette (`--vp-c-important-*`).
+:::
+
+::: warning WARNING
+Non-critical warning. Yellow palette (`--vp-c-warning-*`), comparable to JESM `$warning` (#FFC700).
+:::
+
+::: danger DANGER / ERROR
+Error or destructive action. Red palette (`--vp-c-danger-*`), comparable to JESM `$danger` (#F1416C).
+:::
+
+::: caution CAUTION
+Strong caution (red tones, distinct from warning). Uses `--vp-c-caution-*`.
+:::
+
+::: details Collapsible block (details)
+Content inside **details** is useful for long notes without cluttering the page. Same typography and link colors as the main doc.
+:::
